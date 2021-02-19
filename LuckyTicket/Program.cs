@@ -11,7 +11,7 @@ namespace LuckyTicket
             {
                 Console.WriteLine("Enter the ticket number (4 to 8 digits)");
                 string numberTicket = Console.ReadLine();
-                int Length = numberTicket.Length-1;
+                int Length = numberTicket.Length;
                 int leftpart=0, rigthpart=0;
                 //Checking for an even number of digits
                 if (numberTicket.Length % 2 != 0) 
@@ -23,7 +23,7 @@ namespace LuckyTicket
                 for (int i = 0; i<=Length/2;i++) 
                 {
                     leftpart += int.Parse(numberTicket[i].ToString());
-                    rigthpart += int.Parse(numberTicket[Length - i].ToString());
+                    rigthpart += int.Parse(numberTicket[(Length-1) - i].ToString());
                 }
                 if (leftpart == rigthpart)
                     Console.WriteLine("Lucky");
