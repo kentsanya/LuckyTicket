@@ -20,7 +20,7 @@ namespace LuckyTicket
                     Length += 1;
                 }
                 //Calculating the sum of the right and left sides of the ticket number
-                for (int i = 0; i<=Length/2;i++) 
+                for (int i = 0; i<Length/2;i++) 
                 {
                     leftpart += int.Parse(numberTicket[i].ToString());
                     rigthpart += int.Parse(numberTicket[(Length-1) - i].ToString());
