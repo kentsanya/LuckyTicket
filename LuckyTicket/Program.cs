@@ -12,23 +12,31 @@ namespace LuckyTicket
                 Console.WriteLine("Enter the ticket number (4 to 8 digits)");
                 string numberTicket = Console.ReadLine();
                 int Length = numberTicket.Length;
-                int leftpart=0, rigthpart=0;
-                //Checking for an even number of digits
-                if (numberTicket.Length % 2 != 0) 
+                if (Length > 4 && Length < 8)
                 {
-                    numberTicket = numberTicket.Insert(0, "0");
-                    Length += 1;
+                    int leftpart = 0, rigthpart = 0;
+                    //Checking for an even number of digits
+                    if (numberTicket.Length % 2 != 0)
+                    {
+                        numberTicket = numberTicket.Insert(0, "0");
+                        Length += 1;
+                    }
+                    //Calculating the sum of the right and left sides of the ticket number
+                    for (int i = 0; i < Length / 2; i++)
+                    {
+                        leftpart += int.Parse(numberTicket[i].ToString());
+                        rigthpart += int.Parse(numberTicket[(Length - 1) - i].ToString());
+                    }
+                    if (leftpart == rigthpart)
+                        Console.WriteLine("Lucky");
+                    else Console.WriteLine("Unlucky");
+                    Console.ReadKey();
                 }
-                //Calculating the sum of the right and left sides of the ticket number
-                for (int i = 0; i<Length/2;i++) 
+                else
                 {
-                    leftpart += int.Parse(numberTicket[i].ToString());
-                    rigthpart += int.Parse(numberTicket[(Length-1) - i].ToString());
+                    Console.WriteLine("Invalid input, press key to re-enter");
+                    Console.ReadKey();
                 }
-                if (leftpart == rigthpart)
-                    Console.WriteLine("Lucky");
-                else Console.WriteLine("Unlucky");
-                Console.ReadKey();
                 Console.Clear();
             }
         }
